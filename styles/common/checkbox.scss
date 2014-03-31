@@ -81,34 +81,16 @@ $checkbox-border: 0.1em;
 }
 
 html {
-  &.no_3d {
-    .ios-switch {
-      .switch {
-        &.checked {
-          > div {
-            left: $checkbox-width - $checkbox-height;
-          }
-        }
-        &.unchecked {
-          > div {
-            left: 0;
-          }
+  .ios-switch {
+    .switch {
+      &.checked {
+        > div {
+          @include animation(forwards, forwards, 0.1s, 1, isBallChecked, $myEasing);
         }
       }
-    }
-  }
-  &.has_3d {
-    .ios-switch {
-      .switch {
-        &.checked {
-          > div {
-            @include animation(forwards, forwards, 0.1s, 1, isBallChecked, $myEasing);
-          }
-        }
-        &.unchecked {
-          > div {
-            @include animation(forwards, forwards, 0.1s, 1, isBallUnchecked, $myEasing);
-          }
+      &.unchecked {
+        > div {
+          @include animation(forwards, forwards, 0.1s, 1, isBallUnchecked, $myEasing);
         }
       }
     }
