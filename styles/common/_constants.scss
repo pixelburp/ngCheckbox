@@ -1,0 +1,33 @@
+$header-height: 4em;
+$menu-width: 80%;
+
+$lottery-header-height: 4em;
+$lottery-circle: $lottery-header-height - 1.25em;
+
+$base-fb-blue: #3B5998;
+$base-green: #53a63a;
+$base-green-highlight: #56c753;
+$base-green-lowlight: #377f34;
+$base-green-disabled: #187841;
+$base-dark-green: #1a5243;
+$base-dark-green-highlight: #007150;
+$base-dark-green-lowlight: #002f21;
+$base-red: #ea0f0f;
+$base-red-highlight: #ff6363;
+$base-red-lowlight: #b70000;
+$base-orange: #d68453;
+$base-light-yellow: #ffffa3;
+$base-yellow: #ff0;
+$base-yellow-highlight: #ffffa9;
+
+$base-grey1: #484848;
+$base-grey2: #5d5d5d;
+$base-lightgrey: #f0f0f0;
+
+$support-ff: false !default;
+$support-ms: false !default;
+
+$cardAnimationSpeed: 0.4s;
+
+$scale-by: 1.03;
+$base-sticky-height: 77px;
