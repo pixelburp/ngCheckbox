@@ -1,0 +1,134 @@
+@import 'common/base';
+
+$myEasing: cubic-bezier(0.54, 1.85, 0.5, 1);
+$checkbox-width: 3.5em;
+$checkbox-height: 1.5em;
+$checkbox-border: 0.1em;
+
+.ios-switch {
+  display: inline-block;
+  font-size: 1.0em;
+  @include set-clearer();
+
+  strong {
+    float: left;
+  }
+
+  input {
+  	position: absolute;
+    visibility: hidden;
+  }
+
+  .switch {
+    display: block;
+  	position: relative;
+    float: left;
+
+    width: $checkbox-width;
+    height: $checkbox-height;
+
+  	border: $checkbox-border solid #666;
+  	@include border-radius(1.5em);
+    background: #e6e6e6;
+
+    line-height: $checkbox-height;
+    cursor: pointer;
+
+    > div {
+    	width: $checkbox-height - $checkbox-border;
+    	height: $checkbox-height - $checkbox-border;
+
+      @include border-radius($checkbox-height);
+    	background: #fff;
+      @include box-shadow(0 0.25em 0.25em 0 rgba(0, 0, 0, 0.2));
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      border: $checkbox-border solid #666;
+      pointer-events: none;
+    }
+
+    &:before {
+      display: block;
+      width: 100%;
+      position: absolute;
+      left: -0.5em;
+      top: 0;
+      content: 'NO';
+      text-align: right;
+      font-size: 0.8em;
+    }
+
+    &.checked {
+      border: $checkbox-border solid $base-green;
+      background: $base-green;
+
+      &:before {
+        content: 'YES';
+        text-align: left;
+        left: 0.4em;
+      }
+    }
+
+    &.unchecked {
+      border: $checkbox-border solid $base-red;
+      background: $base-red;
+    }
+
+  }
+
+}
+
+html {
+  &.no_3d {
+    .ios-switch {
+      .switch {
+        &.checked {
+          > div {
+            left: $checkbox-width - $checkbox-height;
+          }
+        }
+        &.unchecked {
+          > div {
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+  &.has_3d {
+    .ios-switch {
+      .switch {
+        &.checked {
+          > div {
+            @include animation(forwards, forwards, 0.1s, 1, isBallChecked, $myEasing);
+          }
+        }
+        &.unchecked {
+          > div {
+            @include animation(forwards, forwards, 0.1s, 1, isBallUnchecked, $myEasing);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include keyframes (isBallChecked) {
+  0% {
+    @include transform(translateX(0));
+  }
+  100% {
+    @include transform(translateX($checkbox-width - $checkbox-height));
+  }
+}
+
+@include keyframes (isBallUnchecked) {
+  0% {
+    @include transform(translateX($checkbox-width - $checkbox-height));
+  }
+  100% {
+    @include transform(translateX(0));
+  }
+}
